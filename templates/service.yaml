@@ -8,5 +8,6 @@ spec:
   type: "{{ .Values.serviceType }}"
   ports:
   - port: 8080
+  - targetPort: 80
   selector:
     app: nginx 
