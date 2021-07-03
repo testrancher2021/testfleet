@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels: mongo
+  labels: mongo-service
     app: mongo 
 spec:
   type: NodePort 
