@@ -44,6 +44,10 @@ spec:
               value: mongodb://mongo:27017/rocketchat
             - name: PORT
               value: "3000"
+            - name: Accounts_UseDNSDomainCheck
+              value: false
+            - name: MOLECULER_LOG_LEVEL
+              valueu: debug
             - name: ROOT_URL
               value: http://34.146.143.246:3000
           image: registry.rocket.chat/rocketchat/rocket.chat:latest
