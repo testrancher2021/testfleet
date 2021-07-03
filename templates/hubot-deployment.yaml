@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+    traefik.enable: "false"
+  creationTimestamp: null
+  labels:
+    io.kompose.service: hubot
+  name: hubot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: hubot
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        traefik.enable: "false"
+      creationTimestamp: null
+      labels:
+        io.kompose.service: hubot
+    spec:
+      containers:
+        - env:
+            - name: BOT_NAME
+              value: bot
+            - name: EXTERNAL_SCRIPTS
+              value: hubot-help,hubot-seen,hubot-links,hubot-diagnostics
+            - name: ROCKETCHAT_PASSWORD
+              value: botpassword
+            - name: ROCKETCHAT_ROOM
+              value: GENERAL
+            - name: ROCKETCHAT_URL
+              value: rocketchat:3000
+            - name: ROCKETCHAT_USER
+              value: bot
+          image: rocketchat/hubot-rocketchat:latest
+          name: hubot
+          ports:
+            - containerPort: 8080
+          resources: {}
+          volumeMounts:
+            - mountPath: /home/hubot/scripts
+              name: hubot-claim0
+      restartPolicy: Always
+      volumes:
+        - name: hubot-claim0
+          persistentVolumeClaim:
+            claimName: hubot-claim0
+status: {}
