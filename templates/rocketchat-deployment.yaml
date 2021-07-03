@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
     traefik.backend: rocketchat
-    traefik.frontend.rule: 'Host: 34.146.143.246:3000'
+    traefik.frontend.rule: 'Host: localhost'
   creationTimestamp: null
   labels:
     io.kompose.service: rocketchat
@@ -20,10 +18,8 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (955b78124)
         traefik.backend: rocketchat
-        traefik.frontend.rule: 'Host: 34.146.143.246:3000'
+        traefik.frontend.rule: 'Host: localhost'
       creationTimestamp: null
       labels:
         io.kompose.service: rocketchat
