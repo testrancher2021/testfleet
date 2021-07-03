@@ -7,13 +7,13 @@ metadata:
     traefik.enable: "false"
   creationTimestamp: null
   labels:
-    io.kompose.service: mongo
+    app: mongo
   name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: mongo
+      app: mongo
   strategy:
     type: Recreate
   template:
@@ -24,7 +24,7 @@ spec:
         traefik.enable: "false"
       creationTimestamp: null
       labels:
-        io.kompose.service: mongo
+        app: mongo
     spec:
       containers:
         - args:
